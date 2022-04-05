@@ -1,0 +1,5 @@
+<% @tweets.reverse.each do |tweet| %>
+    <strong>User</strong>: <%= tweet.user.handle %></br>
+    <strong>Content</strong>: <%= tweet.content %></br></br>
+<% end %>
+

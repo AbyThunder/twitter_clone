@@ -1,0 +1,12 @@
+<strong>Handle</strong>: <%= @user.handle %></br></br>
+
+<strong>Tweets</strong></br>
+<% @user.tweets.reverse.each do |tweet| %>
+  <strong>Content</strong>: <%= tweet.content %></br>
+<% end %></br>
+
+<strong>User Likes</strong>:</br>
+<% @user.liked_tweets.each do |tweet| %>
+  <strong>User</strong>: <%= tweet.user.handle %></br>
+  <strong>Content</strong>: <%= tweet.content %></br>
+<% end %>

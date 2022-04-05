@@ -1,0 +1,9 @@
+<strong>User</strong>: <%= @tweet.user.handle %></br>
+<strong>Content</strong>: <%= @tweet.content %></br></br>
+
+<% if @tweet.likes.any? %>
+  <strong>Liked By</strong>:</br>
+  <% @tweet.liking_users.each do |user| %>
+    <strong>User</strong>: <%= user.handle %></br>
+  <% end %>
+<% end %>
