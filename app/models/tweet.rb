@@ -10,6 +10,6 @@ class Tweet < ApplicationRecord
     Tweet.create(content: content, user: user)
   end
 
-  scope :tweet_order, -> { order(created_at: :asc) }
-  scope :tweet_like_order, -> (id) { where(id: id).order(count(id.likes)) }
+  # scope :tweet_order, -> { order(created_at: :asc) }
+  # scope :tweet_like_order, -> (id) { where(id: id).order(count(id.likes)) }
 end
