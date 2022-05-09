@@ -9,4 +9,10 @@
 <% @user.liked_tweets.each do |tweet| %>
   <strong>User</strong>: <%= tweet.user.handle %></br>
   <strong>Content</strong>: <%= tweet.content %></br>
+<% end %></br>
+
+
+<strong>User Followers</strong>:</br>
+<% @user.following.each do |follower| %>
+  <strong>User</strong>: <%= follower.user.handle %></br>
 <% end %>

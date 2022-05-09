@@ -1,2 +1,8 @@
-<h1>User#new,</h1>
-<p>Find me in app/views/user/new,.html.erb</p>
+<h3>Add User</h3>
+<%= form_with model: @user do |form| %>
+  <p>Name: <%= form.text_field :name %></p>
+  <p>Handle: <%= form.text_field :handle %></p>
+  <p>Bio: <%= form.text_area :bio %></p>
+  <p>Email: <%= form.text_field :email %></p>
+  <%= form.submit %>
+<% end %>
