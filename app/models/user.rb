@@ -7,4 +7,6 @@ class User < ApplicationRecord
 
   validates :name, :handle, presence: true
   validates :handle, format: { with: /\A[\w\d_-]+\z/ }, length: { minimum: 6, maximum: 256 }
+
+  
 end
