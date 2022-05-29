@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
+  before_action :authorize_user
+  #http_basic_authenticate_with name: "ab", password: "ab21", except: :index
+
   def index
     @users = User.all
   end
 
   def show
-    @user = User.find_by(handle: params[:id])
+    @user = User.find(params[:id])
   end
 
   def new
@@ -14,14 +17,26 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
 
-    redirect_to user_path(@user.handle)
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to user_path(@user), notice: "Successfully created account"
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
   end
 
   def user_params
-    params.require(:user).permit(:name, :handle, :bio, :email)
+    params.require(:user).permit(:name, :handle, :bio, :email, :password, :password_confirmation)
   end
 
+  def authorize_user
+    unless logged_in?
+      flash.alert = "Please log in."
+      session[:redirected_from] = request.path
+      redirect_to login_url
+    end
+  end
 end

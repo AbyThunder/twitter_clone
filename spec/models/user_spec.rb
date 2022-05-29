@@ -64,11 +64,11 @@ RSpec.describe User do
   describe 'validations' do
     it { should validate_presence_of(:name) }
     specify { should validate_presence_of(:handle) }
-    specify { should validate_length_of(:handle).is_at_least(6).is_at_most(256)}
+    specify { should validate_length_of(:handle).is_at_least(2).is_at_most(256)}
 
     
     describe 'handle format' do
-      let(:user) { User.new(name: "AB", handle: "lol lol") }
+      let(:user) { User.new(name: "AB", handle: "lol lol", password: "ab21") }
 
       it { should be_invalid }
 
@@ -78,7 +78,7 @@ RSpec.describe User do
       end
 
       context 'when handle is valid' do
-        subject(:user) { User.new(name: "AB", handle: "lololll") }
+        subject(:user) { User.new(name: "AB", handle: "lololll", password: "ab21") }
         it { should be_valid }
       end
     end

@@ -1,6 +1,7 @@
 module Api
-  class UsersController < ::ApplicationController
-    skip_forgery_protection
+  class UsersController < Api::ApplicationController
+    before_action :authorize_request, except: :create
+    
 
     def index
       render json: User.all, include: '' # %w[user user.tweets] == ["user", "user.tweets"]
@@ -22,13 +23,8 @@ module Api
     end
 
     def update
-      # User.find_by(any_field: value)
-      # VS 
-      # User.find(id)
       @user = User.find(params[:id])
       
-      # user = User.last
-      # user.update(name: "New")
       if @user.update(user_params)
         render json: @user
       else
@@ -45,15 +41,7 @@ module Api
     private
 
     def user_params
-      params.require(:user).permit(:name, :handle, :bio, :email)
+      params.require(:user).permit(:name, :handle, :bio, :email, :password, :password_confirmation)
     end
   end
 end
-
-=begin
-{
-  "user": {
-    "name": "Super Cool Name"
-  }
-}
-=end

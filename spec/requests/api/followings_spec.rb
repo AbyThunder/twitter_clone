@@ -4,13 +4,13 @@ RSpec.describe 'Following API', type: :request do
       get "/api/users/#{user.id}/followings"
       response
     end
-    let(:user) { User.create(name: "Makar", handle: "MK1234234", bio: "cool", email: "makar@toptal.com") }
+    let(:user) { User.create(name: "Makar", handle: "MK1234234", bio: "cool", email: "makar@toptal.com", password: "123", password_confirmation: "123") }
     
     specify { expect(api_response).to have_http_status(200) }
     specify { expect(JSON.parse(api_response.body).size).to eq(0) }
 
     context 'when have followers' do
-      let(:follower) { User.create(name: "AB", handle: "MK1234234", bio: "cool", email: "makar@toptal.com") }
+      let(:follower) { User.create(name: "AB", handle: "MK1234234", bio: "cool", email: "makar@toptal.com", password: "123", password_confirmation: "123") }
       let!(:following) { Following.create(user: user, follower: follower) }
       #let!(:tweet) { Tweet.create(content: "Hey", user: user) }
 
@@ -43,7 +43,7 @@ RSpec.describe 'Following API', type: :request do
       }
     end
 
-    let(:user) { User.create(name: "Makar", handle: "MK1231234", bio: "cool", email: "makar@toptal.com") }
+    let(:user) { User.create(name: "Makar", handle: "MK1231234", bio: "cool", email: "makar@toptal.com", password: "123", password_confirmation: "123") }
 
     specify { expect(api_response).to have_http_status(201) }
     specify do

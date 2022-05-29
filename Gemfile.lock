@@ -73,6 +73,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.11.1)
       msgpack (~> 1.2)
@@ -115,6 +116,7 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jsonapi-renderer (0.2.2)
+    jwt (2.3.0)
     loofah (2.16.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -244,6 +246,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.0)
+  bcrypt
   bootsnap
   capybara
   debug
@@ -251,6 +254,7 @@ DEPENDENCIES
   graphql
   importmap-rails
   jbuilder
+  jwt
   puma (~> 5.0)
   rails (~> 7.0.2, >= 7.0.2.3)
   rspec-rails

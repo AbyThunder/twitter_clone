@@ -75,3 +75,6 @@ group :test do
   gem "webdrivers"
 end
 gem "graphiql-rails", group: :development
+
+gem 'bcrypt'
+gem 'jwt'
