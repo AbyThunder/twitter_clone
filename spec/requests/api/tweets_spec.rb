@@ -1,4 +1,5 @@
 RSpec.describe 'Tweets API', type: :request do
+  
   describe 'index' do
     subject(:api_response) do
       get "/api/tweets"

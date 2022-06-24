@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize_user
+  before_action :authorize_user, except: %i[create new]
   #http_basic_authenticate_with name: "ab", password: "ab21", except: :index
 
   def index
@@ -30,13 +30,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :handle, :bio, :email, :password, :password_confirmation)
-  end
-
-  def authorize_user
-    unless logged_in?
-      flash.alert = "Please log in."
-      session[:redirected_from] = request.path
-      redirect_to login_url
-    end
   end
 end

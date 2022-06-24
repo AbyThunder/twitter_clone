@@ -1,6 +1,6 @@
 module Api
   class TweetsController < ::ApplicationController
-    skip_forgery_protection
+    before_action :authorize_request
 
     def index
       render json: Tweet.all, include: 'user' # %w[user user.tweets] == ["user", "user.tweets"]
@@ -44,4 +44,5 @@ module Api
       params.require(:tweet).permit(:content, :user_id)
     end
   end
+  
 end
