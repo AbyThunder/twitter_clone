@@ -76,6 +76,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "timecop"
 end
 gem "graphiql-rails", group: :development
 
